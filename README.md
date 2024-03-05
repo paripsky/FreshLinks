@@ -2,7 +2,7 @@
 ![GitHub deployments](https://img.shields.io/github/deployments/paripsky/freshlinks/Production?label=Production%20build)
 ![Static Badge](https://img.shields.io/badge/Fresh-yellow?logo=deno&label=Deno)
 
-# <img src="static/apple-touch-icon.png" alt="drawing" width="20"/> FreshLinks
+# <img src="static/logo.png" alt="drawing" width="24"/> FreshLinks
 
 FreshLinks is a short link generator with analytics, built using Fresh and Deno.
 
