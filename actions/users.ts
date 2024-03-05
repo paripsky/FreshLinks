@@ -8,6 +8,11 @@ export async function setUserBySessionId(sessionId: string, user: GitHubUser) {
   return ok;
 }
 
+export async function deleteUserBySessionId(sessionId: string) {
+  const kv = await getKV();
+  await kv.delete(["user_by_session", sessionId]);
+}
+
 export async function getUserBySessionId(sessionId: string) {
   const kv = await getKV();
   const user = await kv.get<GitHubUser>(["user_by_session", sessionId]);

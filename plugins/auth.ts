@@ -1,11 +1,11 @@
 import { createGitHubOAuthConfig, createHelpers } from "$deno_kv_oauth/mod.ts";
 import type { Plugin } from "$fresh/server.ts";
-import { getUserBySessionId, setUserBySessionId } from "../actions/users.ts";
+import { deleteUserBySessionId, setUserBySessionId } from "../actions/users.ts";
 import { getGitHubUser, getGitHubUserEmail } from "../utils/github.ts";
 
 const { signIn, handleCallback, signOut, getSessionId } = createHelpers(
   createGitHubOAuthConfig({
-    scope: ["read:user", "user:email"],
+    scope: ["user:email"],
   }),
 );
 
@@ -37,17 +37,11 @@ export default {
     {
       path: "/signout",
       async handler(req) {
+        const sessionId = await getSessionId(req);
+        if (!sessionId) throw new Error("Not logged in");
+        await deleteUserBySessionId(sessionId);
         return await signOut(req);
       },
     },
-    // {
-    //   path: "/protected",
-    //   async handler(req) {
-    //     const sessionId = await getSessionId(req);
-    //     return sessionId === undefined
-    //       ? new Response("Unauthorized", { status: 401 })
-    //       : new Response(JSON.stringify(await getUserBySessionId(sessionId)));
-    //   },
-    // },
   ],
 } as Plugin;
