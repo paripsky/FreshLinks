@@ -2,6 +2,7 @@ import { FreshContext } from "$fresh/server.ts";
 import { getSessionId } from "$deno_kv_oauth/mod.ts";
 import { getUserBySessionId } from "../actions/users.ts";
 import type { GitHubUser } from "../utils/github.ts";
+import { signOut } from "../plugins/auth.ts";
 
 export interface AppState {
   isDarkTheme: boolean;
@@ -17,7 +18,13 @@ export async function handler(
   const sessionId = await getSessionId(req);
 
   if (sessionId) {
-    ctx.state.user = await getUserBySessionId(sessionId);
+    const user = await getUserBySessionId(sessionId);
+    if (!user) {
+      await signOut(req);
+      return ctx.next();
+    }
+
+    ctx.state.user = user;
   }
   ctx.state.isDarkTheme = isDarkTheme;
 

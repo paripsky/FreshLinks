@@ -3,7 +3,7 @@ import type { Plugin } from "$fresh/server.ts";
 import { deleteUserBySessionId, setUserBySessionId } from "../actions/users.ts";
 import { getGitHubUser, getGitHubUserEmail } from "../utils/github.ts";
 
-const { signIn, handleCallback, signOut, getSessionId } = createHelpers(
+export const { signIn, handleCallback, signOut, getSessionId } = createHelpers(
   createGitHubOAuthConfig({
     scope: ["user:email"],
   }),
