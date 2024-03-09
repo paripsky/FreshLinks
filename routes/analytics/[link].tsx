@@ -6,14 +6,19 @@ import { Chart } from "$fresh_charts/mod.ts";
 import { ChartColors, transparentize } from "$fresh_charts/utils.ts";
 import { formatDate } from "../../utils/date.ts";
 import { addMissingDays } from "../../utils/date.ts";
+import { AppState } from "../_middleware.ts";
 
 interface Data {
   link: FreshLink;
 }
 
-export const handler: Handlers<Data> = {
+export const handler: Handlers<Data, AppState> = {
   async GET(req, ctx) {
+    if (!ctx.state.user) return ctx.renderNotFound();
+
     const link = await getLink({ linkId: ctx.params.link });
+    if (ctx.state.user.id !== link.createdBy) return ctx.renderNotFound();
+
     return ctx.render({ link });
   },
 };
