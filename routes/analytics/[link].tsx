@@ -110,6 +110,9 @@ export default function Analytics({ data }: PageProps<Data>) {
                     Date
                   </th>
                   <th scope="col" class="px-6 py-3">
+                    Country
+                  </th>
+                  <th scope="col" class="px-6 py-3">
                     IP
                   </th>
                   <th scope="col" class="px-6 py-3">
@@ -131,6 +134,9 @@ export default function Analytics({ data }: PageProps<Data>) {
                         ? formatTimeAgo(new Date(visit.visitedAt))
                         : "-"}
                     </th>
+                    <td class="px-6 py-4">
+                      {visit.country ?? "Unknown"}
+                    </td>
                     <td class="px-6 py-4">
                       {visit.ip}
                     </td>

@@ -1,6 +1,7 @@
 export type FreshLinkVisit = {
   ip: string;
   userAgent: string;
+  country: string;
   referer?: string;
   visitedAt?: string;
 };

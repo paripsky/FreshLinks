@@ -1,5 +1,6 @@
 import { getKV } from "../utils/kv.ts";
 import type { FreshLink, FreshLinkVisit } from "../types/link.ts";
+import { incrementMetric } from "./metrics.ts";
 
 const MAX_LAST_VISITS = 1000;
 
@@ -27,6 +28,8 @@ export async function createLink({ url, createdBy }: CreateLinkOptions) {
   if (!res.ok) {
     throw new TypeError("Something went wrong");
   }
+
+  await incrementMetric("metric_link_created");
 
   return linkId;
 }
