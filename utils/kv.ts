@@ -1,3 +1,5 @@
-export async function getKV() {
-  return await Deno.openKv();
+const kv = await Deno.openKv();
+
+export function getKV() {
+  return kv;
 }
