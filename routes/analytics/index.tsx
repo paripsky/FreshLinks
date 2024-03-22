@@ -21,7 +21,7 @@ export const handler: Handlers<Data, AppState> = {
 
 export default function Analytics({ data }: PageProps<Data>) {
   return (
-    <section class="bg-white dark:bg-gray-900">
+    <section>
       {data.userLinks.length
         ? (
           <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
@@ -43,8 +43,6 @@ export default function Analytics({ data }: PageProps<Data>) {
                 added {formatTimeAgo(new Date(link.createdAt))}
               </span>
             </div>
-            {/* <a href={`/${link.id}`}>Go</a> - Visits: {link.totalVisits} -{" "} */}
-            {/* <a href={`/analytics/${link.id}`}>Analytics</a> -  */}
           </li>
         ))}
       </ul>

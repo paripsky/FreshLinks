@@ -55,19 +55,19 @@ export default function Home({ data, url, state }: PageProps<Data, AppState>) {
           <h1 class="text-4xl font-bold">Welcome to Freshlinks</h1>
         </div>
       </div>
-      <section class="bg-white dark:bg-gray-900">
+      <section>
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">
           Create a new FreshLink
         </h2>
         <form method="POST">
-          <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
-            <div class="sm:col-span-2">
-              <label
-                for="url"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
-                Enter an https:// URL:
-              </label>
+          <div class="flex flex-col">
+            <label
+              for="url"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Enter an https:// URL:
+            </label>
+            <div class="flex gap-2">
               <input
                 type="url"
                 name="url"
@@ -76,23 +76,28 @@ export default function Home({ data, url, state }: PageProps<Data, AppState>) {
                 pattern="https://.*"
                 size={30}
                 required
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="indent-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-600 focus:border-blue-600 block flex-1 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
+              <button
+                type="submit"
+                class="flex disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!state.user}
+                title={!state.user
+                  ? "Please login to generate a FreshLink"
+                  : undefined}
+              >
+                <span className="relative overflow-hidden rounded-full p-[2px] h-full">
+                  <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#ffdb1e_0%,#ffffff_50%,#ffdb1e_100%)] dark:bg-[conic-gradient(from_90deg_at_50%_50%,#171717_0%,#737373_50%,#171717_100%)]" />
+                  <div className="inline-flex h-full w-full cursor-pointer justify-center items-center rounded-full bg-white px-3 py-1 text-xs font-medium leading-5 text-slate-600 backdrop-blur-xl dark:bg-black dark:text-slate-200">
+                    Generate FreshLink 🍋
+                  </div>
+                </span>
+              </button>
             </div>
           </div>
-          <button
-            type="submit"
-            class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed"
-            disabled={!state.user}
-            title={!state.user
-              ? "Please login to generate a FreshLink"
-              : undefined}
-          >
-            Generate FreshLink
-          </button>
         </form>
       </section>
-      <section class="bg-white dark:bg-gray-900">
+      <section>
         {data.userLinks.length
           ? (
             <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">

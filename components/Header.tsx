@@ -7,7 +7,7 @@ export function Header(
 ) {
   return (
     <header>
-      <nav class="bg-white border-gray-200 px-4 sm:px-6 py-2.5 dark:bg-gray-800">
+      <nav class="border-gray-200 px-4 sm:px-6 py-2.5">
         <div class="flex flex-wrap gap-4 mx-auto max-w-3xl">
           <a href="/" class="flex gap-1 items-center">
             <img
