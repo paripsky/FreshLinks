@@ -67,7 +67,7 @@ export default function Home({ data, url, state }: PageProps<Data, AppState>) {
             >
               Enter an https:// URL:
             </label>
-            <div class="flex gap-2">
+            <div class="flex flex-col sm:flex-row gap-2">
               <input
                 type="url"
                 name="url"
@@ -80,7 +80,7 @@ export default function Home({ data, url, state }: PageProps<Data, AppState>) {
               />
               <button
                 type="submit"
-                class="flex disabled:opacity-50 disabled:cursor-not-allowed"
+                class="flex disabled:opacity-50 disabled:cursor-not-allowed ml-auto"
                 disabled={!state.user}
                 title={!state.user
                   ? "Please login to generate a FreshLink"

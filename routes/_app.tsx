@@ -34,6 +34,7 @@ export default function App(
         />
         <meta property="og:image:alt" content="FreshLinks Logo" />
         <meta property="og:site_name" content="FreshLinks" />
+        <meta name="theme-color" content="#ffdb1e" />
         <title>FreshLinks</title>
         <link rel="stylesheet" href="/styles.css" />
       </head>
