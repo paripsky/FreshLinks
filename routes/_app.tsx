@@ -39,7 +39,7 @@ export default function App(
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body class="relative">
-        <div class="dark:hidden absolute inset-0 -z-10 h-full w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
+        <div class="dark:hidden absolute inset-0 -z-10 h-full min-h-screen w-full bg-white bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]">
         </div>
         <div class="hidden dark:block absolute top-0 z-[-2] h-screen w-full bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
         </div>
